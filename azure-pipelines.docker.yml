@@ -9,11 +9,16 @@ stages:
   - job: job1
     steps:
       - task: Docker@2
+        displayName: Login to ACR
+        inputs:
+         containerRegistry: 'docker1'
+         command: Login
+      - task: Docker@2
         displayName: Build an image
         inputs:
          containerRegistry: 'docker1'
          repository: 'image1'
-         script: docker build -f Dockerfile -t rupam12071993/image_push:'$(Build.BuildId)' .
+         script: docker build -f Dockerfile -t rupam12071993/image_push:fresh .
         #  command: build
         #  Dockerfile: '**/Dockerfile'
         #  tags: |
@@ -24,12 +29,13 @@ stages:
   #   dependsOn: job1
   #   displayName: Push_the_image
   #   steps:
+      - 
       - task: Docker@2
         displayName: Push_the_image
         inputs:
          containerRegistry: 'dockerpush'
          repository: 'rupam12071993/image_push'
-         script: docker push rupam12071993/image_push:'$(Build.BuildId)'
+         script: docker push rupam12071993/image_push:fresh
         #  command: push
         #   tags: |
         #   $(tag)
