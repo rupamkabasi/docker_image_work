@@ -12,4 +12,4 @@ stages:
          containerRegistry: 'docker1'
          repository: 'image1'
          command: build
-         Dockerfile: app/Dockerfile
+         Dockerfile: '**/Dockerfile'
