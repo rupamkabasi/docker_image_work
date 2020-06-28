@@ -15,7 +15,7 @@ stages:
          repository: 'image1'
          command: build
          Dockerfile: '**/Dockerfile'
-         tags: $(tag)
+         tags: '$(Build.BuildId)'
         
 
   # - job: job2
@@ -28,5 +28,5 @@ stages:
          containerRegistry: 'dockerpush'
          repository: 'image_push'
          command: push
-         tags: $(tag)
+         tags: '$(Build.BuildId)'
        
