@@ -1,5 +1,7 @@
 stages:
 - stage: stage1
+  variables: 
+    tag: '$(Build.BuildId)'
   displayName: pull_docker_image
   pool:
    vmImage: 'ubuntu-16.04'
@@ -13,6 +15,8 @@ stages:
          repository: 'image1'
          command: build
          Dockerfile: '**/Dockerfile'
+         tags: $(tag)
+        
 
   # - job: job2
   #   dependsOn: job1
@@ -24,4 +28,5 @@ stages:
          containerRegistry: 'dockerpush'
          repository: 'image_push'
          command: push
+         tags: $(tag)
        
