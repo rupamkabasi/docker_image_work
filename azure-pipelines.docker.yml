@@ -13,10 +13,11 @@ stages:
         inputs:
          containerRegistry: 'docker1'
          repository: 'image1'
-         command: build
-         Dockerfile: '**/Dockerfile'
-         tags: |
-          $(tag)
+         script: docker build -f Dockerfile -t rupam12071993/image_push:'$(Build.BuildId)' .
+        #  command: build
+        #  Dockerfile: '**/Dockerfile'
+        #  tags: |
+        #   $(tag)
         
 
   # - job: job2
@@ -27,8 +28,9 @@ stages:
         displayName: Push_the_image
         inputs:
          containerRegistry: 'dockerpush'
-         repository: 'image_push'
-         command: push
-         tags: |
-          $(tag)
+         repository: 'rupam12071993/image_push'
+         script: docker push rupam12071993/image_push:'$(Build.BuildId)'
+        #  command: push
+        #   tags: |
+        #   $(tag)
        
