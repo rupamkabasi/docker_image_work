@@ -5,19 +5,21 @@ stages:
    vmImage: 'ubuntu-16.04'
   jobs:
   - job: job1
-    displayName: Build an image
     steps:
       - task: Docker@2
+        displayName: Build an image
         inputs:
          containerRegistry: 'docker1'
          repository: 'image1'
          command: build
          Dockerfile: '**/Dockerfile'
-  - job: job2
-    dependsOn: job1
-    displayName: Push_the_image
-    steps:
+
+  # - job: job2
+  #   dependsOn: job1
+  #   displayName: Push_the_image
+  #   steps:
       - task: Docker@2
+        displayName: Push_the_image
         inputs:
          containerRegistry: 'dockerpush'
          repository: 'image_push'
