@@ -18,7 +18,7 @@ stages:
         inputs:
          containerRegistry: 'docker1'
          repository: 'image1'
-         script: docker build -f Dockerfile -t rupam12071993/image_push:fresh .
+         script: docker build -f **/Dockerfile -t rupam12071993/image_push:fresh .
         #  command: build
         #  Dockerfile: '**/Dockerfile'
         #  tags: |
