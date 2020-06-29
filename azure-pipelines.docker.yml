@@ -18,7 +18,7 @@ stages:
         inputs:
          containerRegistry: 'docker1'
          repository: 'image1'
-         script: docker build -t rupamkabasi/image1:fresh .
+         script: docker build .
         #  command: build
         #  Dockerfile: '**/Dockerfile'
         #  tags: |
