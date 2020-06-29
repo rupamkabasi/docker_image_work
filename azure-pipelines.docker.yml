@@ -18,6 +18,7 @@ stages:
         inputs:
          containerRegistry: 'docker1'
          repository: 'image1'
+         bash: chmod 666 /var/run/docker.sock
          script: docker build .
         #  command: build
         #  Dockerfile: '**/Dockerfile'
